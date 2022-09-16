@@ -15,7 +15,7 @@ public class ChatController {
     private ChatService chatService;
 
 
-    @MessageMapping("/chat.sendMessage/{chatRoomId}")
+    @MessageMapping("/sendMessage/{chatRoomId}")
     public void sendMessage(@DestinationVariable("chatRoomId") String chatRoomId,
                             @Payload ChatMessage chatMessage) {
         if (!StringUtils.hasText(chatRoomId) || chatMessage == null) {
