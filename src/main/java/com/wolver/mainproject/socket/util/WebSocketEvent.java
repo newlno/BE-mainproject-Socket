@@ -50,6 +50,9 @@ public class WebSocketEvent {
             // 선착순매칭
             connectedQueue.put(waitingQueue.poll(),chatRoomId);
             connectedQueue.put(waitingQueue.poll(),chatRoomId);
+            ChatMessage chatMessage = new ChatMessage();
+            chatMessage.setMessageType(MessageType.JOIN);
+            chatService.sendMessage(chatRoomId, chatMessage);
         }
     }
 
