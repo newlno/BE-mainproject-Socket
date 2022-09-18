@@ -41,7 +41,7 @@ public class WebSocketEvent {
         if (waitingQueue.size() > 2) {
             String chatRoomId = UUID.randomUUID().toString();
             // 랜덤매칭
-//            int user1 = ((int) (Math.random() * waitingQueue.size()) + 1);
+            int user1 = ((int) (Math.random() * waitingQueue.size()) + 1);
 //            int user2 = ((int) (Math.random() * waitingQueue.size()) + 1);
 //            String user1SessionId = waitingQueue.get(user1);
 //            String user2SessionId = waitingQueue.get(user2);
@@ -65,5 +65,6 @@ public class WebSocketEvent {
         ChatMessage chatMessage = new ChatMessage();
         chatMessage.setMessageType(MessageType.DISCONNECTED);
         chatService.sendMessage(chatroomId, chatMessage);
+        connectedQueue.remove(sessionId);
     }
 }
