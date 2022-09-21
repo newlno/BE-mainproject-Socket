@@ -1,18 +1,22 @@
 package com.wolver.mainproject.socket.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import nonapi.io.github.classgraph.json.Id;
+import java.io.Serializable;
+
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class ChatMessage {
+@AllArgsConstructor
+@Builder
+//@RedisHash(value = "user")
+public class ChatMessage implements Serializable {
 
-    private String SessionId;
+    @Id
+    private String sessionId;
     private String message;
+    private String roomId;
     private MessageType messageType;
 
 }

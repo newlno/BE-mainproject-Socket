@@ -1,5 +1,6 @@
 package com.wolver.mainproject.socket.config;
 
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -8,20 +9,25 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
+@AllArgsConstructor
+public class StompConfig implements WebSocketMessageBrokerConfigurer {
+
 
     // 메시지 보내는 url
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("queue/chat");
-        config.setApplicationDestinationPrefixes("/app");
+        config.enableSimpleBroker("/sub");
+        // 클라이언트에게 SEND하기
+        config.setApplicationDestinationPrefixes("/pub");
+        // 클라이언트 SEND 요청을 처리함
     }
 
     // 소켓 연결 url
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/wss/websocket")
+        registry.addEndpoint("/ws")
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
+
 }
