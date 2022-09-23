@@ -15,6 +15,6 @@ public class WebConfig implements WebMvcConfigurer {
 //                .allowedOrigins(도메인)
                 .allowedHeaders("*")
                 .allowCredentials(true)
-                .allowedMethods("POST");
+                .allowedMethods("POST","GET");
     }
 }
