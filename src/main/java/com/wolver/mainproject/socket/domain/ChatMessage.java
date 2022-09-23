@@ -10,7 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@RedisHash(value = "user")
 public class ChatMessage implements Serializable {
 
     @Id
