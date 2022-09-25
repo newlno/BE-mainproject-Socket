@@ -2,5 +2,5 @@ package com.wolver.mainproject.socket.domain;
 
 
 public enum MessageType {
-    CHAT, JOIN, DISCONNECTED
+    JOIN, DISCONNECTED, CHAT, READY, GAME, NEXT,FINISH
 }

@@ -2,13 +2,13 @@ package com.wolver.mainproject.socket.controller;
 
 import com.wolver.mainproject.socket.domain.ChatMessage;
 import com.wolver.mainproject.socket.domain.MessageType;
-import com.wolver.mainproject.socket.service.ChatService;
 import com.wolver.mainproject.socket.util.WebSocketEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -19,8 +19,8 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ChatController {
 
-    private final ChatService service;
     private final WebSocketEvent event;
+    private final SimpMessagingTemplate messageSending;
 
 
     // pub/chat/enter
@@ -36,7 +36,7 @@ public class ChatController {
             log.info("룸" + roomId);
             log.info("세션" + message.getSessionId());
             log.info("메시지" + message.getMessage());
-            service.sendMessage(roomId, message);
+            messageSending.convertAndSend(roomId, message);
         } else {
             ChatMessage serverMessage = new ChatMessage();
             serverMessage.setMessageType(MessageType.DISCONNECTED);
@@ -48,10 +48,9 @@ public class ChatController {
             log.info("나갔을때 룸" + roomId);
             log.info("나간사람 " + message.getSessionId());
             log.info("나갔을때 메시지 " + serverMessage.getMessage());
-            service.sendMessage(roomId, serverMessage);
+            messageSending.convertAndSend(roomId, serverMessage);
         }
     }
-
 }
 
 
