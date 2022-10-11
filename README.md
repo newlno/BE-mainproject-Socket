@@ -47,20 +47,6 @@
 | _💙Sub Page_   | `공유 단어장`                                                                             |
 | _💙Detail_     | `고객지원`                                                                                |
 
-<br>
-<br>
-
-> ### FE 기술스택
-
-<pre> 📝프론트엔드 주요기술! </pre>
-
-<div>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
-  <img src="https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat-square&logo=Amazon S3&logoColor=white"/>
-</div>
 
 <br>
 <br>
